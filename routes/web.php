@@ -47,5 +47,5 @@ Route::resource('usuarios','UserController');
 
 Route::resource('productos','ProductoController');
 
-    
+Route::resource('cursos','CursoController');    
  
