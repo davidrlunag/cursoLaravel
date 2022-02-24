@@ -28,7 +28,7 @@ class CursoController extends Controller
     public function create()
     {
         //
-        return "Hay que mostrar el formulario";
+        return view('cursos.create');
     }
 
     /**
@@ -40,7 +40,10 @@ class CursoController extends Controller
     public function store(Request $request)
     {
         //
-        return Curso::create($request->all());
+        Curso::create($request->all());
+
+        return redirect()->route('cursos.index')
+        ->with('success','Cursos creado satisfactoriamente');
 
     }
 
@@ -66,7 +69,7 @@ class CursoController extends Controller
     public function edit($id)
     {
         $curso = Curso::find($id);
-        return $curso;
+        return view('cursos.edit',compact('curso'));
         //
     }
 
@@ -81,7 +84,12 @@ class CursoController extends Controller
     {
         $curso = Curso::find($id);
         $curso->name = $request->name;
-        return $curso;
+        $curso->description = $request->description;
+        $curso->update();
+        $request->session()->flash('success', 'Task was successful!');
+        //return redirect()->route('cursos.index')
+        //->with('success','Cursos modificado satisfactoriamente');
+        
         //
     }
 
@@ -94,6 +102,11 @@ class CursoController extends Controller
     public function destroy($id)
     {
         //
-        $curso::destroy(); 
+
+        $curso = Curso::find($id);
+        $curso->delete(); 
+
+        return redirect()->route('cursos.index')
+        ->with('success','Curso eliminado satisfactoriamente');
     }
 }

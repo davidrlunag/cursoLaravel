@@ -1,3 +1,19 @@
+@extends('cursos.layout')
+@section('title')
+    <title>Pagina para el manejo de Cursos</title>
+@endsection
+@section('content')
+
+@if ($message = Session::get('success'))
+<div class="alert alert-success">
+    <p>{{ $message }}</p>
+</div>
+@endif
+
+
+<div class="pull-right">
+    <a class="btn btn-success" href="{{ route('cursos.create') }}"> Crear Curso</a>
+</div>
 <table class="table table-bordered" style="border:1px red solid;width:80%">
     <tr style="border:1px red solid">
         <th>No</th>
@@ -26,3 +42,4 @@
     </tr>
     @endforeach
 </table>
+@endsection
