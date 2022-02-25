@@ -9,6 +9,7 @@ $factory->define(Curso::class, function (Faker $faker) {
     return [
         //
         'name' => $faker->name,
-        'description'=> $faker->text
+        'description'=> $faker->text,
+        'categoria_id' => factory(App\Categoria::class),
     ];
 });

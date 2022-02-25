@@ -48,4 +48,9 @@ Route::resource('usuarios','UserController');
 Route::resource('productos','ProductoController');
 
 Route::resource('cursos','CursoController');    
- 
+Route::resource('categorias','CategoriaController');    
+
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

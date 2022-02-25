@@ -11,8 +11,8 @@ class CategoriaSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Categoria::class, 3)->create()->each(function($cat){
-            $cat->save();
-        });
+        factory(App\Categoria::class, 5)->create()->each(function($cat){
+            $cat->cursos()->save(factory(App\Curso::class)->make());
+           });
     }
 }

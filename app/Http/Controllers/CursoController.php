@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Curso;
 use Illuminate\Http\Request;
 
+
 class CursoController extends Controller
 {
     /**
@@ -69,6 +70,9 @@ class CursoController extends Controller
     public function edit($id)
     {
         $curso = Curso::find($id);
+        \Session::put('success',""); 
+        sleep(4);
+        \Session::put('success',"Si cambia"); 
         return view('cursos.edit',compact('curso'));
         //
     }
@@ -86,9 +90,10 @@ class CursoController extends Controller
         $curso->name = $request->name;
         $curso->description = $request->description;
         $curso->update();
-        $request->session()->flash('success', 'Task was successful!');
-        //return redirect()->route('cursos.index')
-        //->with('success','Cursos modificado satisfactoriamente');
+        \Session::flash('success',"Curso creado satisfactoriamente"); 
+        sleep(4);
+        return redirect()->route('cursos.index')
+        ->with('success','Cursos modificado satisfactoriamente');
         
         //
     }

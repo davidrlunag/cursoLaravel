@@ -1,4 +1,4 @@
-@extends('cursos.layout')
+@extends('categorias.layout')
 <script
 src="https://code.jquery.com/jquery-3.6.0.min.js"
 integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
@@ -19,10 +19,10 @@ crossorigin="anonymous"></script>
 <div class="row">
     <div class="col-lg-12 margin-tb">
         <div class="pull-left">
-            <h2>Editar  Curso</h2>
+            <h2>Editar  Categoria</h2>
         </div>
         <div class="pull-right">
-            <a class="btn btn-primary" href="{{ route('cursos.index') }}"> Back</a>
+            <a class="btn btn-primary" href="{{ route('categorias.index') }}"> Back</a>
         </div>
     </div>
 </div>
@@ -38,7 +38,7 @@ crossorigin="anonymous"></script>
     </div>
 @endif
    
-<form action="{{ route('cursos.update',$curso->id) }}" method="POST">
+<form action="{{ route('categorias.update',$curso->id) }}" method="POST">
     @csrf
     @method('PUT')
      <div class="row">
@@ -48,15 +48,7 @@ crossorigin="anonymous"></script>
                 <input type="text" name="name" class="form-control" placeholder="Name" value="{{$curso->name}}">
             </div>
         </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Description:</strong>
-                <textarea class="form-control" style="height:150px" name="description" placeholder="Description" >
-                    {{$curso->description}}
-                </textarea>
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+           <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                 <button type="submit" class="btn btn-primary">Submit</button>
         </div>
     </div>
